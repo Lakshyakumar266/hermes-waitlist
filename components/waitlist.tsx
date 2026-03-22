@@ -161,9 +161,11 @@ function StarField() {
 interface SceneProps {
   size?: number;
   meshRef?: React.MutableRefObject<THREE.Object3D | null>;
+  onReady?: () => void;
+  onProgress?: (pct: number) => void;
 }
 
-function ThreeScene({ size = 380, meshRef }: SceneProps) {
+function ThreeScene({ size = 380, meshRef, onReady, onProgress }: SceneProps) {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -379,6 +381,7 @@ function ThreeScene({ size = 380, meshRef }: SceneProps) {
       ];
       g1.dispose();
       g2.dispose();
+      onReady?.();
     };
 
     const loader = new GLTFLoader();
@@ -436,8 +439,12 @@ function ThreeScene({ size = 380, meshRef }: SceneProps) {
 
         root.add(gltf.scene);
         gltfRoot = gltf.scene;
+        onReady?.();
       },
-      undefined,
+      (xhr) => {
+        if (xhr.total > 0) onProgress?.((xhr.loaded / xhr.total) * 100);
+      },
+
       () => buildFallback(),
     );
 
@@ -832,7 +839,7 @@ function WaitlistForm() {
     return null;
   }, [name, email]);
 
-  const submit = () => {
+  const submit = async () => {
     const e = validate();
     if (e) {
       setErr(e);
@@ -840,8 +847,26 @@ function WaitlistForm() {
     }
     setErr("");
     setPhase("sending");
-    // Replace with real API: await fetch("/api/waitlist", { method:"POST", body: JSON.stringify({ name, email }) })
-    setTimeout(() => setPhase("done"), 1900);
+
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErr(data.error ?? "Something went wrong.");
+        setPhase("idle");
+        return;
+      }
+
+      setPhase("done");
+    } catch {
+      setErr("Network error. Please try again.");
+      setPhase("idle");
+    }
   };
 
   const inputStyle = (hasErr: boolean): CSSProperties => ({
@@ -965,7 +990,7 @@ function WaitlistForm() {
           )}
 
           <motion.button
-            onClick={submit}
+            onClick={() => { submit(); }}
             disabled={phase === "sending"}
             whileHover={{ scale: 1.01, filter: "brightness(1.06)" }}
             whileTap={{ scale: 0.98 }}
@@ -1081,7 +1106,15 @@ function Ticker() {
 // ═══════════════════════════════════════════════════════════════════════════════
 // PAGE
 // ═══════════════════════════════════════════════════════════════════════════════
-export default function WaitlistPage() {
+interface WaitlistPageProps {
+  onModelReady?: (value: boolean) => void;
+  onProgress?: (pct: number) => void;
+}
+
+export default function WaitlistPage({
+  onModelReady,
+  onProgress,
+}: WaitlistPageProps) {
   const heroRef = useRef<HTMLElement>(null);
   const sceneRef = useRef<THREE.Object3D | null>(null);
 
@@ -1489,7 +1522,12 @@ export default function WaitlistPage() {
                   { duration: 1.3, delay: 0.2, ease: EASE } as Transition
                 }
               >
-                <ThreeScene size={500} meshRef={sceneRef} />
+                <ThreeScene
+                  size={500}
+                  meshRef={sceneRef}
+                  onReady={() => onModelReady?.(true)}
+                  onProgress={onProgress}
+                />
               </motion.div>
             </div>
           </div>
