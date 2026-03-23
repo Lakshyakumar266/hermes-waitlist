@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
 
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Hermes Workspace: Waitlist",
     description:
       "All-in-one communication and management platform for organisations. Messaging, live sessions, and admin tools unified in one workspace.",
-      
+
     url: "https://www.hermesworkspace.com",
     siteName: "Hermes Workspace",
     images: [
