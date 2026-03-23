@@ -1,4 +1,17 @@
 import { ImageResponse } from "next/og";
+import fs from "fs";
+import path from "path";
+
+// ✅ convert local images → base64
+function getBase64(file: string) {
+  const filePath = path.join(process.cwd(), "public", file);
+
+  const data = fs.readFileSync(filePath);
+  return `data:image/png;base64,${data.toString("base64")}`;
+}
+
+const icon = getBase64("icon.png");
+const model = getBase64("og-model.png");
 
 export const size = {
   width: 1200,
@@ -11,27 +24,17 @@ export default function Image() {
   return new ImageResponse(
     <div
       style={{
+        display: "flex",
         width: "100%",
         height: "100%",
-        display: "flex",
         flexDirection: "row",
-        background: "#090909",
+        background:
+          "radial-gradient(circle at 75% 40%, rgba(255,255,255,0.08), transparent 60%), radial-gradient(circle at 80% 60%, rgba(255,200,120,0.08), transparent 60%), #090909",
         color: "white",
         fontFamily: "sans-serif",
-        position: "relative",
       }}
     >
-      {/* background glow */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(circle at 75% 40%, rgba(255,255,255,0.08), transparent 60%), radial-gradient(circle at 80% 60%, rgba(255,200,120,0.08), transparent 60%)",
-        }}
-      />
-
-      {/* LEFT TEXT */}
+      {/* LEFT */}
       <div
         style={{
           width: "55%",
@@ -40,18 +43,10 @@ export default function Image() {
           flexDirection: "column",
           justifyContent: "center",
           gap: "20px",
-          zIndex: 2,
         }}
       >
-        {/* logo */}
-        <img
-          src="https://www.hermesworkspace.com/icon.png"
-          width={64}
-          height={64}
-          style={{ borderRadius: 12 }}
-        />
+        <img src={icon} width={64} height={64} />
 
-        {/* title */}
         <div
           style={{
             fontSize: 72,
@@ -62,49 +57,44 @@ export default function Image() {
           Hermes Workspace
         </div>
 
-        {/* tagline */}
         <div
           style={{
+            display: "flex",
+            flexDirection: "column",
             fontSize: 36,
             fontWeight: 600,
             color: "#d0d0d0",
             lineHeight: 1.2,
           }}
         >
-          One workspace for every message,
-          <br />
-          every decision.
+          <span>One workspace for every message,</span>
+          <span>every decision.</span>
         </div>
 
-        {/* subtext */}
         <div
           style={{
             fontSize: 18,
             color: "#888",
-            marginTop: "10px",
           }}
         >
           All-in-one communication & management platform
         </div>
       </div>
 
-      {/* RIGHT VISUAL */}
+      {/* RIGHT */}
       <div
         style={{
           width: "45%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          zIndex: 2,
         }}
       >
         <img
-          src="https://www.hermesworkspace.com/og-model.png"
+          src={model}
           width={420}
           height={420}
-          style={{
-            objectFit: "contain",
-          }}
+          style={{ objectFit: "contain" }}
         />
       </div>
     </div>,
