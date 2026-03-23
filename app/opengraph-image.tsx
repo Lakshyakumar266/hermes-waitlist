@@ -79,6 +79,21 @@ export default function Image() {
         >
           All-in-one communication & management platform
         </div>
+        <div
+          style={{
+            marginTop: "20px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            padding: "10px 18px",
+            borderRadius: "8px",
+            background: "rgba(255,255,255,0.08)",
+            fontSize: 18,
+            fontWeight: 500,
+          }}
+        >
+          Join the waitlist →
+        </div>
       </div>
 
       {/* RIGHT */}

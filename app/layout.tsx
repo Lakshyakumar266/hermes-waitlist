@@ -5,13 +5,13 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.hermesworkspace.com"),
 
   title: {
-    default: "Hermes Workspace",
+    default:
+      "Hermes Workspace - Waitlist – All-in-One Communication Platform for Organisations and Schools",
     template: "%s | Hermes Workspace",
   },
 
   description:
-    "Hermes Workspace is an all-in-one communication and management platform for schools and organisations. Messaging, live sessions, and admin tools unified in one place.",
-
+    "Hermes Workspace is an all-in-one communication and management platform for organisationsand schools. Messaging, live sessions, announcements, and admin tools unified in one powerful workspace.",
   keywords: [
     "Hermes Workspace",
     "school communication platform",
@@ -25,9 +25,10 @@ export const metadata: Metadata = {
   creator: "Hermes Workspace",
 
   openGraph: {
-    title: "Hermes Workspace",
+    title: "Hermes Workspace: Waitlist",
     description:
-      "One workspace for every message, every decision. Built for schools and organisations.",
+      "All-in-one communication and management platform for organisations. Messaging, live sessions, and admin tools unified in one workspace.",
+      
     url: "https://www.hermesworkspace.com",
     siteName: "Hermes Workspace",
     images: [
@@ -69,11 +70,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="h-full antialiased"
-      suppressHydrationWarning
-    >
+    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );
