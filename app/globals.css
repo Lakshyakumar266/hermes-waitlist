@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+html, body {
+  height: auto;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 200vh;
+  cursor: none;
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

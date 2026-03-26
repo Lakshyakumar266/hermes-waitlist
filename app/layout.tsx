@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
+import SmoothScroll from "../components/SmoothScroll";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.hermesworkspace.com"),
@@ -73,7 +74,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
-      <body>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "Hermes Workspace",
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "Web",
+              description:
+                "All-in-one communication and management platform for schools and organisations.",
+              url: "https://www.hermesworkspace.com",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "INR",
+              },
+            }),
+          }}
+        />
+      </head>
+      <body suppressHydrationWarning>
+        <SmoothScroll />
         {children}
         <SpeedInsights />
       </body>
