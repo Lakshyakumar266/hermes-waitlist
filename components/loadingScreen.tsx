@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * HERMES WORKSPACE — LOADING SCREEN
+ * HERMESWORKSPACE — LOADING SCREEN
  * Drop-in component shown while the 3D model loads.
  *
  * Usage in page.tsx:
@@ -15,8 +15,8 @@
  *   </AnimatePresence>
  */
 
-import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 // ─── Star Field (same as main page, self-contained) ───────────────────────────
@@ -281,6 +281,8 @@ function FloatingParticles() {
   );
 }
 
+
+
 // ─── Loading Screen ───────────────────────────────────────────────────────────
 export function LoadingScreen({ progress }: { progress: number }) {
   return (
@@ -349,7 +351,7 @@ export function LoadingScreen({ progress }: { progress: number }) {
             letterSpacing: "-0.01em",
           }}
         >
-          Hermes Workspace
+          HermesWorkspace
         </span>
       </div>
 

@@ -10,7 +10,7 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            name: "Hermes Workspace",
+            name: "HermesWorkspace",
             applicationCategory: "BusinessApplication",
             operatingSystem: "Web",
             description:

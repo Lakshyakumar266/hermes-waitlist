@@ -54,7 +54,7 @@ export default function Image() {
             lineHeight: 1.05,
           }}
         >
-          Hermes Workspace
+          HermesWorkspace
         </div>
 
         <div

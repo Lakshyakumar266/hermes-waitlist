@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * HERMES WORKSPACE — WAITLIST PAGE (Next.js / TypeScript)
+ * HERMESWORKSPACE — WAITLIST PAGE (Next.js / TypeScript)
  * ─────────────────────────────────────────────────────────────────────────────
  * npm install framer-motion gsap three @types/three @tabler/icons-react
  *
@@ -944,7 +944,7 @@ html, body {
                   letterSpacing: "-0.01em",
                 }}
               >
-                Hermes Workspace
+                HermesWorkspace
               </span>
             </div>
             {/* Badge */}
@@ -1002,7 +1002,7 @@ html, body {
               <div style={{ flex: 1, maxWidth: 560 }}>
                 {/* ══ HERO BRAND BLOCK ══
                     Reading order: icon mark → full product name → descriptor → headline → form
-                    "Hermes Workspace" is the full name — both words equal weight, white.
+                    "HermesWorkspace" is the full name — both words equal weight, white.
                 ══ */}
                 <motion.div
                   initial={{ opacity: 0, y: 18 }}
@@ -1054,7 +1054,7 @@ html, body {
                         lineHeight: 1,
                       }}
                     >
-                      Hermes Workspace
+                      HermesWorkspace
                     </p>
                   </div>
 
@@ -1148,7 +1148,7 @@ html, body {
                     marginBottom: 40,
                   }}
                 >
-                  Hermes Workspace is an all-in-one communication and management
+                  HermesWorkspace is an all-in-one communication and management
                   platform built for organisations — starting with Indian
                   schools. Messaging, announcements, live sessions, and admin
                   tools unified in one place.
@@ -1502,7 +1502,7 @@ html, body {
                       maxWidth: 380,
                     }}
                   >
-                    Hermes Workspace is heading into private beta with Indian
+                    HermesWorkspace is heading into private beta with Indian
                     schools — and expanding to all kinds of organisations soon.
                     Join the waitlist to get early access.
                   </p>
@@ -1540,7 +1540,7 @@ html, body {
                 color: T.muted,
               }}
             >
-              Hermes Workspace © 2025
+              HermesWorkspace © {new Date().getFullYear()}
             </span>
           </div>
           <a

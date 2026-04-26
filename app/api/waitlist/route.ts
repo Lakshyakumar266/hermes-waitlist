@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from:    "onboarding@resend.dev",
       to:      email.trim().toLowerCase(),
-      subject: "You're on the Hermes Workspace waitlist",
+      subject: "You're on the HermesWorkspace waitlist",
       html: `
         <div style="font-family:monospace;background:#090909;color:#e8e8e8;padding:40px;max-width:480px;margin:0 auto;border-radius:8px;">
           <div style="margin-bottom:32px;">
@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
             </div>
             <h1 style="margin:0 0 8px;font-size:22px;color:#ffffff;letter-spacing:-0.02em;">Signal received.</h1>
             <p style="margin:0;color:#888;font-size:14px;line-height:1.6;">
-              Hey ${name.trim().split(" ")[0]}, you're on the waitlist for Hermes Workspace.
+              Hey ${name.trim().split(" ")[0]}, you're on the waitlist for HermesWorkspace.
             </p>
           </div>
 
@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
           </p>
 
           <div style="border-top:1px solid #222;padding-top:24px;color:#555;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">
-            Hermes Workspace · hermesworkspace.com
+            HermesWorkspace · hermesworkspace.com
           </div>
         </div>
       `,
