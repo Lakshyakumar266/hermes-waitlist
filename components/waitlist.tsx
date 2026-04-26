@@ -574,7 +574,7 @@ function WaitlistForm() {
                 color: T.body,
               }}
             >
-              We&apos;ll reach you when Hermes goes live, {name.split(" ")[0]}.
+              We&apos;ll reach you when HermesWorkspace goes live, {name.split(" ")[0]}.
             </p>
           </div>
         </motion.div>
@@ -925,7 +925,7 @@ html, body {
               >
                 <Image
                   src="/Square-Logo-BW-midwhite.png"
-                  alt="Hermes Logo"
+                  alt="HermesWorkspace Logo"
                   height={40}
                   width={40}
                   style={{
@@ -944,7 +944,7 @@ html, body {
                   letterSpacing: "-0.01em",
                 }}
               >
-                HermesWorkspace
+                Hermes Workspace
               </span>
             </div>
             {/* Badge */}
