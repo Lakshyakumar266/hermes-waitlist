@@ -944,7 +944,7 @@ html, body {
                   letterSpacing: "-0.01em",
                 }}
               >
-                Hermes Workspace
+                HermesWorkspace
               </span>
             </div>
             {/* Badge */}
@@ -1054,7 +1054,7 @@ html, body {
                         lineHeight: 1,
                       }}
                     >
-                      HermesWorkspace
+                      Hermes Workspace
                     </p>
                   </div>
 
